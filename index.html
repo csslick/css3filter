@@ -2,51 +2,80 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CSS3 Filter</title>
+	<title>css3filter.html</title>
 	<style>
-		*{ margin: 0; padding: 0;}
-		h1{ padding: 10px; }
-		label{
-		  display: inline-block;
-		  border: 1px solid skyblue;
-		  padding: 5px 20px;
-		  margin: 5px 10px;
+		*{margin: 0; padding: 0;}
+		.clear{ clear: both;}
+		figure{
+			clear: both;
+			text-align: center;
 		}
+		h1{
+			padding: 10px;
+			text-align: center;
+			font-weight: normal;
+		}
+		label{
+			float: left;
+			border: 1px solid skyblue;
+			border-right-width: 0;
+			padding: 5px 20px;
+			box-sizing: border-box;
+		}
+		label.last{
+			border-right-width: 1px;
+		}
+		
+		/* 필터 적용하기 */
 		#gray:checked ~ figure > img{
-		  filter: grayscale(100%);
+			/* 값: 0 ~ 100% */
+			filter: grayscale(100%);
 		}
 		#blur:checked ~ figure > img{
-		  filter: blur(10px);
-		}
+			/* 값: px */
+			filter: blur(10px);
+		}		
 		#invert:checked ~ figure > img{
-		  filter: invert(100%);
-		}
+			/* 값: 0 ~ 100% */
+			filter: invert(100%);
+		}		
 		#sepia:checked ~ figure > img{
-		  filter: sepia(100%);
-		}	
-	</style>	
+			/* 값: 0 ~ 100% */
+			filter: sepia(100%);
+		}		
+		
+		/* 버튼 스타일 */
+		label{
+			width: 20%;
+			text-align: center;
+		}
+		[name=filter]{ display: none;}
+		[name=filter]:checked + label{
+			background: skyblue; color: #fff;
+		}
+	</style>
 </head>
 <body>
+	<h1>CSS3 Filter</h1>
+	<input type="radio" id="normal" name="filter" checked>
+	<label for="normal">normal</label>
+		
+	<input type="radio" id="gray" name="filter">	
+	<label for="gray">grayscale</label>
+	
+	<input type="radio" id="blur" name="filter">	
+	<label for="blur">blur</label>
 
-<h1>CSS3 Filter</h1><hr>
-<label for="normal">normal</label>
-<input type="radio" id="normal" name="filter">
-
-<label for="gray">grayscale</label>
-<input type="radio" id="gray" name="filter">
-
-<label for="blur">blur</label>
-<input type="radio" id="blur" name="filter">
-
-<label for="invert">invert</label>
-<input type="radio" id="invert" name="filter">
-
-<label for="sepia">sepia</label>
-<input type="radio" id="sepia" name="filter">
-
-<figure>
-  <img src="https://images.pexels.com/photos/833186/pexels-photo-833186.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" width="100%">
-</figure>	
-
+	<input type="radio" id="invert" name="filter">
+	<label for="invert">invert</label>
+	
+	<input type="radio" id="sepia" name="filter">	
+	<label for="sepia" class="last">sepia</label>
+	
+	<div class="clear"></div>
+	<figure>
+		<img src="https://images.pexels.com/photos/273037/pexels-photo-273037.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="여자" width="100%">
+		<figcaption>사진에 대한 설명글</figcaption>
+	</figure>
 </body>
 </html>
